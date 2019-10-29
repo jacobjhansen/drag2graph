@@ -62,18 +62,24 @@ with open(dataFile) as csv_file:
                 channelList[(i-1)].addReading(currentReading)
 
 
+#plt.plot(xaxis,yaxis)
+#plt.gcf().autofmt_xdate()#plt.show()
+#plt.gcf().autofmt_xdate()
 
+fig = plt.figure()
+fig.subplots_adjust(hspace=0.9, wspace=0.4)
+for i in range(1, 4):
+    ax = fig.add_subplot(3, 1, i)
 
-xaxis = []
-yaxis = []
-xtickers = []
-lastValue = 0
+    xaxis = []
+    yaxis = []
 
-for item in channelList[0].returnReadings():
-    xaxis.append(item.timestamp)
-    yaxis.append(item.value)
+    for item in channelList[i-1].returnReadings():
+        xaxis.append(item.timestamp)
+        yaxis.append(item.value)
 
+    ax.set_title(str(channelList[i-1].identifier))
+    ax.plot(xaxis,yaxis)
+    
 
-plt.plot(xaxis,yaxis)
-plt.gcf().autofmt_xdate()
 plt.show()
