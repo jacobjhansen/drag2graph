@@ -26,12 +26,11 @@ class reading(object):
         self.timestamp = timestamp
         self.value = value
 
-
-# For py2exe
-# dataFile = sys.argv[1]
+dataFile = sys.argv[1]
 
 # For TESTING
-dataFile = 'dataq013.csv'
+# dataFile = 'dataq013.csv'
+
 channelList = []
 
 with open(dataFile) as csv_file:
